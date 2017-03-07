@@ -31,6 +31,8 @@ def axfr(command)
         puts "Zone transfer failed on server: #{dom[1]}/#{dom[0]} for domain #{dom[2]}".upcase.white.on_green
       elsif out =~ /XFR size/i
         puts "Zone transfer successful on server: #{dom[1]}/#{dom[0]} for domain #{dom[2]}".upcase.white.on_red
+      elsif out =~ /connection timed out/i
+        puts "Connection to DNS Servers Timed Out: #{dom[1]}/#{dom[0]} for domain #{dom[2]}".upcase.magenta.bold
       else
         puts "Unknown response on server: #{dom[1]}/#{dom[0]} for domain #{dom[2]} - Check debug.log".upcase.white.on_green
       end
